@@ -1,0 +1,376 @@
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js" type="text/javascript"></script>
+		<script src="http://gsgd.co.uk/sandbox/jquery/easing/jquery.easing.1.3.js" type="text/javascript"></script>
+		<script src="booklet/jquery.booklet.1.3.1.min.js" type="text/javascript"></script>
+		<script src="//maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyD_cxog_scXWOiDmcttmlws62otRgz_A5E" type="text/javascript"></script>
+		<link href="booklet/jquery.booklet.1.3.1.css" type="text/css" rel="stylesheet" media="screen, projection, tv" />
+
+		<style type="text/css">
+			@font-face {
+				font-family: EditUndo;
+				src: url('edunline.ttf');
+			}
+			@font-face {
+				font-family: Uni;
+				src: url('uni.ttf');
+			}
+			body {
+				font-family: Uni;
+				background: url("wood.jpg") ;
+			}
+			#coverTitle {
+				padding: 10px;
+				font-size: 100px;
+				font-family: EditUndo;
+				text-align: center;
+			}
+			#coverTitle {
+				padding: 10px;
+				font-size: 100px;
+			}
+			#author {
+				font-family: Uni;
+				margin-left: 20px;
+			}
+			#author div, #author input {
+				float: left;
+				font-size: 30px;
+			}
+			#author input {
+				border-radius: 5px;
+			}
+			#author div {
+				padding-right: 10px;
+			}
+			.beginButton {
+				border: 2px solid black;
+				border-radius: 5px;
+				padding: 5px;
+				clear: left;
+				width: 135px;
+				position: absolute;
+				top: 550px;
+				left: 247px;
+				font-size: 40px;
+				font-family: Uni;
+			}
+			.illuminated {
+				float: left;
+				font-size: 300px;
+				margin-bottom: -66px;
+				margin-right: 15px;
+				margin-top: -52px;
+			}
+			#username {
+				display: inline;
+			}
+			.class, .choice{
+				width: 185px;
+				height: 450px;
+				float: left;
+				border: 1px solid 
+				black;
+				border-radius: 5px;
+				margin: 9px;
+				opacity: 0.6;
+			}
+			.class.selected, .choice.selected {
+				box-shadow: inset 0 0 5px 5px #888;
+				opacity: 1;
+			}
+			.class .info {
+				display: none;
+			}
+			.class.selected .info {
+				opacity: 1;
+				padding: 20px;
+				font-size: 13px;
+				display: block;
+				font-family: Uni;
+				color: 
+				black;
+				margin-top: 50px;
+			}
+			.choice {
+				height: 100px;
+				width: 90%;
+				margin: 20px;
+			}
+			#nextArrow {
+				width: 200px;
+				height: 200px;
+				margin-left: auto;
+				margin-right: auto;
+				border: 1px solid black;
+				border-radius: 5px;
+				margin-top: auto;
+				margin-bottom: auto;
+				clear: left;
+				opacity: 0.5;
+				pointer-events: none;
+			}
+			#nextArrow.enabled {
+				opacity: 1.0;
+				pointer-events: auto;
+				background: url("arrow.png");
+				background-size: 100%;
+			}
+			#introText {
+				font-size: 35px;
+				font-family: Uni;
+				padding: 0px 20px;
+			}
+			.header {
+				font-family: Uni;
+			}
+			.headerText {
+				width: 320px;
+				margin: 0px auto;
+			}
+			.headerName {
+				display: inline;
+			}
+			#warrior {
+				background: url('warriorBanner.png');	
+			}
+			#wizard {
+				background: url('wizardBanner.png');
+			}
+			#rogue {
+				background: url('rogueBanner.png');
+			}
+			.page {
+				background: url('parchment.jpg');
+				height: 100%;
+			}
+			#iwanna {
+				font-family: Uni;
+				font-size: 56px;
+				margin-left: 30px;
+				margin-top: 20px;
+			}
+			#choose {
+				font-size: 20px;
+				margin: 20px;
+			}
+			.place {
+				font-size: 30px;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mybook">
+			<div class="page"> 
+				<div id="coverTitle">
+					<div>COOB</div>
+					<div>YOUR </div>
+					<div>OWN </div>
+					<div>ADVENTURE</div>
+				</div>
+				<div>
+					<div id="author">
+						<div>
+							by:
+						</div>
+						<input type="text" id="name" placeholder="your name here"></input>
+					</div>
+				</div>
+				<div class="beginButton">
+					begin...
+				</div>
+			</div>
+			<div class="page"> 
+				<div class="header">
+					<div class="headerText">
+						Coob Your Own Adventure by <div class="headerName"></div>
+					</div>
+				</div>
+				<div id="introText">
+					<div class="illuminated">
+						W
+					</div>
+					elcome to Coob Your Own Adventure!  I am the Wizard Coob, here to invite you on an epic quest!
+					The world is vast, and yours for the taking, but where should you go?  What should you eat?
+					What manner of terrible beast shall you vanquish?  What amorous hearts shall be broken?
+					Probe deep into yourself as you embark upon a journey that will change your life forever.  Come with
+					me, <div id="username"></div>, and we shall coooooooooob....
+				</div>
+			</div>
+			<div class="page">
+				<div class="header"> 
+					<div class="headerText">
+						Coob Your Own Adventure by <div class="headerName"></div>
+					</div>
+				</div>
+				<div id="choose">
+					Please choose a class according to your living style:
+				</div>
+				<div class="class" id="warrior">
+					<div class="info">
+						The warriors tirelessly roam the earth in search of new foes to slay and honors to be won.
+						They are most comfortable on foot in the great outdoors, but will venture miles in search of
+						a hearty meal.  
+					</div>
+				</div>
+				<div class="class" id="wizard">
+					<div class="info">
+						Practitioners of the arcane arts since the dawn of time, the wizards rely on their intellect
+						to conjure forces beyond the dreams of mortal man.  Often found buried in scrolls in the deepest
+						stacks of the library, they will also seek the highest heights of art and business.  
+
+					</div>
+				</div>
+				<div class="class" id="rogue">
+					<div class="info">
+						Rogues prowl the underside of the city - their nimble fingers catch the best deals in town.  
+						They know every gritty going on 
+						before it has been planned, moving outside the framework of everyday life.  
+					</div>
+				</div>
+				<div id="nextArrow">
+				</div>
+			</div>
+			<div class="page"> 
+				<div class="header"> 
+					<div class="headerText">
+						Coob Your Own Adventure by <div class="headerName"></div>
+					</div>
+				</div>
+				<div id="iwanna">
+					You may now embark upon your first quest.  Where do you want to go?
+				</div>
+				<div id="choice1" class="choice">
+					<div class="place"></div>
+				</div>
+				<div id="choice2" class="choice">
+					<div class="place"></div>
+				</div>
+				<div id="choice3" class="choice">
+					<div class="place"></div>
+				</div>
+			</div>
+			<div class="page">
+				<div class="header"> 
+					<div class="headerText">
+						Coob Your Own Adventure by <div class="headerName"></div>
+					</div>
+				</div>
+				<div id="map_canvas" style="width: 90%; height: 90%; margin: 20px"></div>
+
+			</div>
+		</div>
+		<script type="text/javascript">
+			var username, characterClass, characterCategories;
+			var latitude, longitude;
+			var warriorCategories = ["4d4b7105d754a06374d81259", "4d4b7105d754a06377d81259", "4d4b7105d754a06379d81259"]; //food, outdoors, travel
+ 			var wizardCategories = ["4d4b7104d754a06370d81259", "4d4b7105d754a06372d81259", "4d4b7105d754a06375d81259"]; //A&E, College, professional 
+ 			var rogueCategories = ["4d4b7105d754a06376d81259", "4e67e38e036454776db1fb3a", "4d4b7105d754a06378d81259"]; //nightlife, residence, shops
+
+
+			$(function() {
+				//single book
+				$('#mybook').booklet({
+        			width:  '90%',
+        			height: 800,
+        			closed: true,
+        			hovers: false,
+        			manual: false,
+        			overlays: false,
+   	 			});
+			});
+
+			$('.beginButton').click(function(e){
+		        e.preventDefault();
+		        username = document.getElementById("name").value;
+		        console.log(username);
+		        $("#username").text(username);
+		        $(".headerName").text(username);
+		        $('#mybook').booklet("next");
+		    });
+		    $('#nextArrow').click(function(e){
+		        e.preventDefault();
+		        $('#mybook').booklet("next");
+		    });
+		    $(".class").click(function(e) {
+		    	$(".class").removeClass("selected");
+		    	$("#"+e.target.id).addClass("selected");
+		    	$("#nextArrow").addClass("enabled");
+		    })
+		    $("#nextArrow").click(function(e) {
+		    	characterClass = $(".class.selected").attr("id");
+		    	switch(characterClass) {
+		    		case "warrior":
+		    			characterCategories = warriorCategories;
+		    			break;
+		    		case "wizard" :
+		    			characterCategories = wizardCategories;
+		    			break;
+		    		case "rogue" :
+		    			characterCategories = rogueCategories;
+		    			break;
+		    	}
+		    	console.log("we're here");
+			   	navigator.geolocation.getCurrentPosition(function(position) {
+			   		latitude = position.coords.latitude;
+			   		longitude = position.coords.longitude;
+			   		console.log(position);
+
+					var map = new GMap2(document.getElementById("map_canvas"));
+					map.setCenter(new GLatLng(40.7419358, -73.990723), 13);
+					map.addOverlay(new GMarker(new GLatLng(40.7419358, -73.990723)));
+
+					jQuery.getJSON("https://api.foursquare.com/v2/venues/search?ll="+latitude+","+longitude+"&limit=1&categoryId="+characterCategories[0]+
+		    			"&radius=2000&v=20120616&client_id=YIRQD0EKCFZXTUUIYI4NHAOHYD3T01R4ZNJDXLE3E4TOCYXS&client_secret=13GQOFYA23ZDJBMZPTLTMJMOHRAHYJNTVSWF13LLRYBWRUXE&callback=?", function(data) {
+		    					
+								console.log(data);
+								console.log(+" "+data.response.venues[0].name);
+
+								$('#choice1 .place').text(data.response.venues[0].name);
+								$("#choice1").one("click", function(){
+									map.addOverlay(new GMarker(new GLatLng(data.response.venues[0].location.lat, data.response.venues[0].location.lng)));
+								});
+
+							});
+					jQuery.getJSON("https://api.foursquare.com/v2/venues/search?ll="+latitude+","+longitude+"&limit=1&categoryId="+characterCategories[1]+
+		    			"&radius=2000&v=20120616&client_id=YIRQD0EKCFZXTUUIYI4NHAOHYD3T01R4ZNJDXLE3E4TOCYXS&client_secret=13GQOFYA23ZDJBMZPTLTMJMOHRAHYJNTVSWF13LLRYBWRUXE&callback=?", function(data) {
+		    					
+								console.log(data);
+								console.log(+" "+data.response.venues[0].name);
+
+								$('#choice2 .place').text(data.response.venues[0].name);
+								$("#choice2").one("click", function(){
+									map.addOverlay(new GMarker(new GLatLng(data.response.venues[0].location.lat, data.response.venues[0].location.lng)));
+								});
+
+							});
+					jQuery.getJSON("https://api.foursquare.com/v2/venues/search?ll="+latitude+","+longitude+"&limit=1&categoryId="+characterCategories[2]+
+		    			"&radius=2000&v=20120616&client_id=YIRQD0EKCFZXTUUIYI4NHAOHYD3T01R4ZNJDXLE3E4TOCYXS&client_secret=13GQOFYA23ZDJBMZPTLTMJMOHRAHYJNTVSWF13LLRYBWRUXE&callback=?", function(data) {
+		    					
+								console.log(data);
+								console.log(+" "+data.response.venues[0].name);
+
+								$('#choice3 .place').text(data.response.venues[0].name);
+								$("#choice3").one("click", function(){
+									map.addOverlay(new GMarker(new GLatLng(data.response.venues[0].location.lat, data.response.venues[0].location.lng)));
+								});
+
+							});
+						    $(".choice").click(function(e) {
+						    	$(".choice").removeClass("selected");
+						    	$("#"+e.target.id).addClass("selected");
+						    });
+			   	});
+
+
+
+		    });
+
+
+
+
+		</script>
+	</body>
+</html>
